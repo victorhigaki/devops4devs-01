@@ -6,13 +6,14 @@ on:
 
 jobs:
   CI:
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     steps:
       - name: Construção da imagem Docker
         run: echo "Docker Build"
       - name: "Publicar a imagem no Docker Hub"
         run: echo "Docker push"
   CD:
+    needs: [CI]
     runs-on: ubuntu-latest
     steps:
       - name: Conectar com o Kubernetes
